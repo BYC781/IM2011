@@ -105,7 +105,7 @@ self.facing, self.isRun, self.isWalk, self.hit, self.jump, self.defense = 1, 1, 
 
 1. 站立攻擊：動作總共有15幀，我們用self.hitCount讓他從0一直加到15，到15的時候self.hitCount下一幀會歸零，並使self.hit = 0。
 2. 站立防禦：動作總共有15幀，我們用self.defCount讓他從0一直加到15，到15的時候self.defCount下一幀會歸零，並使self.defense = 0。
-3. 站立跳躍：動作總共有17幀，我們self.jumpCount使他從8一直減到-8，1~8幀時neg = 1，此時透過549行的self.y -= (self.jumpCount ** 2) * 0.5 * neg 使角色做出往上的垂直位移，-1~-9幀時neg = -1，使角色做出往下的垂直位移。當self.jumpCount到-9的時候下一幀會變成8，並使self.jump = 0。
+3. 站立跳躍：動作總共有17幀，我們self.jumpCount使他從8一直減到-8，當self.jumpCount介於8和1之間時neg = 1，此時透過549行的self.y -= (self.jumpCount ** 2) * 0.5 * neg 使角色做出往上的垂直位移，當self.jumpCount-1和-8時之間時neg = -1，使角色做出往下的垂直位移。當self.jumpCount到-8的時候下一幀會變成8，並使self.jump = 0。
 4. 站立跳攻：與站立跳躍幾乎無不同，唯一不同的地方是self.jumpCount變回8的時候會額外使self.hit = 0
 5. 走跳：與站立跳躍機制相同，且可以邊走邊跳。
 6. 走跳攻：與站立跳攻機制相同，且可以邊走邊跳。
